@@ -1,0 +1,36 @@
+name: Build and Deploy to AKS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout código
+      uses: actions/checkout@v3
+
+    - name: Login no Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Login no ACR
+      run: |
+        az acr login --name acrchatgptlab
+
+    - name: Build e push da imagem
+      run: |
+        docker build -t acrchatgptlab.azurecr.io/flask-app:latest ./app
+        docker push acrchatgptlab.azurecr.io/flask-app:latest
+
+    - name: Configurar credencial do AKS
+      run: |
+        az aks get-credentials --resource-group rg-labchatgpt --name aks-labchatgpt --overwrite-existing
+
+    - name: Aplicar manifest.yaml
+      run: |
+        kubectl apply -f ./app/manifest.yaml
