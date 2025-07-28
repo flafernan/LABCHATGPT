@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-aks-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-aks-app
+  template:
+    metadata:
+      labels:
+        app: flask-aks-app
+    spec:
+      containers:
+      - name: flask-aks-app
+        image: acrchatgptlab.azurecr.io/flask-aks-app:latest
+        ports:
+        - containerPort: 80

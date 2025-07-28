@@ -1,36 +1,45 @@
-name: Build and Deploy to AKS
+name: Deploy Flask App to AKS
 
 on:
   push:
     branches:
       - main
 
+env:
+  REGISTRY: acrchatgptlab.azurecr.io
+  RESOURCE_GROUP: rg-labchatgpt
+  AKS_CLUSTER: aks-labchatgpt
+  IMAGE_NAME: flask-aks-app
+
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout código
-      uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
-    - name: Login no Azure
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: Login to Azure CLI
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Login no ACR
-      run: |
-        az acr login --name acrchatgptlab
+      - name: Azure Container Registry Login
+        run: az acr login --name acrchatgptlab
 
-    - name: Build e push da imagem
-      run: |
-        docker build -t acrchatgptlab.azurecr.io/flask-app:latest ./app
-        docker push acrchatgptlab.azurecr.io/flask-app:latest
+      - name: Build Docker image
+        run: |
+          docker build -t $REGISTRY/$IMAGE_NAME:latest ./app
 
-    - name: Configurar credencial do AKS
-      run: |
-        az aks get-credentials --resource-group rg-labchatgpt --name aks-labchatgpt --overwrite-existing
+      - name: Push Docker image
+        run: |
+          docker push $REGISTRY/$IMAGE_NAME:latest
 
-    - name: Aplicar manifest.yaml
-      run: |
-        kubectl apply -f ./app/manifest.yaml
+      - name: Get AKS credentials
+        run: |
+          az aks get-credentials --resource-group $RESOURCE_GROUP --name $AKS_CLUSTER --overwrite-existing
+
+      - name: Deploy to AKS
+        run: |
+          kubectl apply -f k8s/deployment.yaml
+          kubectl apply -f k8s/service.yaml
