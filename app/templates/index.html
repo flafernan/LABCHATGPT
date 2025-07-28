@@ -1,34 +1,66 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Bem-vindo ao AKS</title>
+    <meta charset="UTF-8" />
+    <title>Bem-vindo ao AKS - Versão Moderna</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
         body {
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
-            text-align: center;
-            padding: 50px;
+            margin: 0;
+            background: linear-gradient(135deg, #0078D7, #00BFFF);
+            font-family: 'Roboto', sans-serif;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
         }
         .container {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px 60px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+            text-align: center;
+            max-width: 500px;
         }
         h1 {
-            color: #0078D7;
+            font-weight: 700;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
         }
         p {
-            font-size: 18px;
+            font-weight: 400;
+            font-size: 1.25rem;
+            line-height: 1.6;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+        }
+        .rocket {
+            font-size: 3rem;
+            animation: bounce 2s infinite;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🚀 AKS com Terraform e GitHub Actions</h1>
-        <p>Aplicação Flask implantada com automação e infraestrutura como código.</p>
+        <div class="rocket">🚀</div>
+        <h1>AKS + Terraform + GitHub Actions</h1>
+        <p>
+            🚀 Sua aplicação Flask foi atualizada com sucesso! <br />
+            Experimente a automação e infraestrutura como código em ação.
+        </p>
     </div>
 </body>
 </html>
