@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bem-vindo ao AKS - Versão Moderna 2222</title>
+  <title>Bem-vindo ao AKS - Versão Moderna</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
@@ -13,9 +13,9 @@
 
     body {
       margin: 0;
-      background: linear-gradient(135deg, #0f9d58, #34a853);
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
       font-family: 'Roboto', sans-serif;
-      color: #fff;
+      color: #ffffff;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -25,56 +25,54 @@
     }
 
     .container {
-      background: rgba(255, 255, 255, 0.10);
-      backdrop-filter: blur(20px) saturate(180%);
-      border-radius: 20px;
-      padding: 50px 40px;
-      max-width: 420px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(16px) saturate(160%);
+      -webkit-backdrop-filter: blur(16px) saturate(160%);
+      border-radius: 16px;
+      padding: 48px 36px;
+      max-width: 460px;
       width: 100%;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
       transition: transform 0.3s ease;
     }
 
     .container:hover {
-      transform: scale(1.05);
+      transform: translateY(-5px);
     }
 
     .rocket {
       font-size: 4rem;
       animation: float 3s ease-in-out infinite;
-      margin-bottom: 25px;
+      margin-bottom: 24px;
       user-select: none;
     }
 
     @keyframes float {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-20px);
-      }
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
     }
 
     h1 {
       font-weight: 700;
-      font-size: 2.8rem;
-      margin-bottom: 15px;
-      text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+      font-size: 2.4rem;
+      margin-bottom: 16px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     p {
       font-weight: 400;
-      font-size: 1.2rem;
-      line-height: 1.5;
-      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #e0e0e0;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     }
 
     @media (max-width: 480px) {
       .container {
-        padding: 30px 20px;
+        padding: 32px 20px;
       }
       h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
       }
       .rocket {
         font-size: 3rem;

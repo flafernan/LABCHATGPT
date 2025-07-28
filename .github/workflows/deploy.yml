@@ -43,3 +43,7 @@ jobs:
         run: |
           kubectl apply -f k8s/deployment.yaml
           kubectl apply -f k8s/service.yaml
+
+      - name: Update AKS Deployment with new image
+        run: |
+          kubectl set image deployment/flask-aks-app flask-aks-app=$REGISTRY/$IMAGE_NAME:latest --record
