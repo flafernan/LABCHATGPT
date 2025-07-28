@@ -1,94 +1,95 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Bem-vindo ao AKS - Versão Moderna</title>
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bem-vindo ao AKS - Versão Moderna 2222</title>
+  <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
     * {
-        box-sizing: border-box;
+      box-sizing: border-box;
     }
 
     body {
-        margin: 0;
-        background: linear-gradient(135deg, #0078D7, #00BFFF);
-        font-family: 'Roboto', sans-serif;
-        color: #fff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        padding: 20px;
-        text-align: center;
+      margin: 0;
+      background: linear-gradient(135deg, #0f9d58, #34a853);
+      font-family: 'Roboto', sans-serif;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      text-align: center;
     }
 
     .container {
-        background: rgba(255, 255, 255, 0.12);
-        backdrop-filter: saturate(180%) blur(15px);
-        border-radius: 20px;
-        padding: 50px 40px;
-        max-width: 420px;
-        width: 100%;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        transition: transform 0.3s ease;
+      background: rgba(255, 255, 255, 0.10);
+      backdrop-filter: blur(20px) saturate(180%);
+      border-radius: 20px;
+      padding: 50px 40px;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s ease;
     }
+
     .container:hover {
-        transform: scale(1.05);
+      transform: scale(1.05);
     }
 
     .rocket {
-        font-size: 4rem;
-        animation: float 3s ease-in-out infinite;
-        margin-bottom: 25px;
-        user-select: none;
+      font-size: 4rem;
+      animation: float 3s ease-in-out infinite;
+      margin-bottom: 25px;
+      user-select: none;
     }
 
     @keyframes float {
-        0%, 100% {
-            transform: translateY(0);
-        }
-        50% {
-            transform: translateY(-20px);
-        }
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
     }
 
     h1 {
-        font-weight: 700;
-        font-size: 2.8rem;
-        margin-bottom: 15px;
-        text-shadow: 1px 1px 6px rgba(0,0,0,0.4);
+      font-weight: 700;
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
     }
 
     p {
-        font-weight: 400;
-        font-size: 1.2rem;
-        line-height: 1.5;
-        text-shadow: 1px 1px 4px rgba(0,0,0,0.25);
+      font-weight: 400;
+      font-size: 1.2rem;
+      line-height: 1.5;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
     }
 
     @media (max-width: 480px) {
-        .container {
-            padding: 30px 20px;
-        }
-        h1 {
-            font-size: 2rem;
-        }
-        .rocket {
-            font-size: 3rem;
-        }
+      .container {
+        padding: 30px 20px;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      .rocket {
+        font-size: 3rem;
+      }
     }
-</style>
+  </style>
 </head>
 <body>
-    <div class="container" role="main" aria-label="Mensagem de boas-vindas">
-        <div class="rocket" aria-hidden="true">🚀</div>
-        <h1>AKS + Terraform + GitHub Actions</h1>
-        <p>
-            Sua aplicação Flask foi atualizada com sucesso!<br />
-            Experimente automação e infraestrutura como código em ação.
-        </p>
-    </div>
+  <div class="container" role="main" aria-label="Mensagem de boas-vindas">
+    <div class="rocket" aria-hidden="true">🚀</div>
+    <h1>AKS + Terraform + GitHub Actions</h1>
+    <p>
+      Sua aplicação Flask foi atualizada com sucesso!<br />
+      Experimente automação e infraestrutura como código em ação.
+    </p>
+  </div>
 </body>
 </html>
