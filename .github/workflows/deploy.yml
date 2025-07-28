@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - develop  # Adiciona a branch `develop` para criar PR automaticamente
 
 env:
   REGISTRY: acrchatgptlab.azurecr.io
@@ -47,3 +48,20 @@ jobs:
       - name: Update AKS Deployment with new image
         run: |
           kubectl set image deployment/flask-aks-app flask-aks-app=$REGISTRY/$IMAGE_NAME:latest --record
+
+  create-pr:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/develop'  # Executa apenas para a branch `develop`
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Atualizando a branch main com a última versão da develop"
+          title: "Merge `develop` into `main`"
+          body: "Este PR contém as últimas alterações feitas na branch develop."
+          base: main  # A branch destino (main)
+          branch: develop  # A branch origem (develop)
