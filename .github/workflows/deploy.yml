@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Garante que todas as branches e o histórico sejam baixados
 
       - name: Login to Azure CLI
         uses: azure/login@v1
@@ -55,6 +57,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Garante que todas as branches sejam baixadas
+
+      - name: Configure Git user
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
@@ -65,3 +74,7 @@ jobs:
           body: "Este PR contém as últimas alterações feitas na branch develop."
           base: main  # A branch destino (main)
           branch: develop  # A branch origem (develop)
+
+permissions:
+  pull-requests: write
+  contents: read
